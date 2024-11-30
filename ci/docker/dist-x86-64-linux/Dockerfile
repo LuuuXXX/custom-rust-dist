@@ -13,7 +13,9 @@ RUN yum install -y \
       patchelf \
       gcc \
       gcc-c++ \
-      make
+      make \
+      openssl-devel \
+      pkgconfig
 
 ENV TARGET=x86_64-unknown-linux-gnu
 
@@ -24,4 +26,4 @@ ENV PATH=$PATH:/root/.cargo/bin
 RUN curl -sL https://nodejs.org/dist/v16.9.0/node-v16.9.0-linux-x64.tar.xz | tar -xJf - -C /opt
 ENV PATH=$PATH:/opt/node-v16.9.0-linux-x64/bin
 
-CMD cargo build --release --target=$TARGET
+CMD cargo dev vendor --target=$TARGET
