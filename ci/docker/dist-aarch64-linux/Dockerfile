@@ -26,6 +26,10 @@ ENV PATH=$PATH:/root/.cargo/bin
 RUN curl -sL https://nodejs.org/dist/v16.9.0/node-v16.9.0-linux-arm64.tar.xz | tar -xJf - -C /opt
 ENV PATH=$PATH:/opt/node-v16.9.0-linux-arm64/bin
 
+ENV PNPM_HOME=/root/.local/share/pnpm
+RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
+ENV PATH=$PNPM_HOME/bin:$PATH
+
 RUN rustup target add aarch64-unknown-linux-gnu
 
 CMD cargo dev vendor
