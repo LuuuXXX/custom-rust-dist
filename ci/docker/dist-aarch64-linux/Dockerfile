@@ -1,6 +1,10 @@
 FROM centos:7
 
-RUN yum clean all && yum update -y 
+# 设置 DNS
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
+    echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+
+RUN yum update -y 
 RUN yum install -y epel-release 
 RUN yum install -y \ 
       webkitgtk3-devel \
