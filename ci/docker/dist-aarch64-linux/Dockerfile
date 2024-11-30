@@ -1,6 +1,6 @@
 FROM centos:7
 
-RUN yum upgreade -y && \
+RUN yum upgrade -y && \
     yum install -y epel-release && \
     yum install -y \ 
       webkitgtk3-devel \
