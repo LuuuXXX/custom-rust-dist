@@ -1,14 +1,15 @@
 FROM centos:7
 
-RUN yum install -y epel-release
-RUN yum install -y \ 
-    webkitgtk3-devel \
-    libappindicator-gtk3-devel \
-    librsvg2-devel \
-    patchelf \
-    gcc \
-    gcc-c++ \
-    make
+RUN yum upgreade -y && \
+    yum install -y epel-release && \
+    yum install -y \ 
+      webkitgtk3-devel \
+      libappindicator-gtk3-devel \
+      librsvg2-devel \
+      patchelf \
+      gcc \
+      gcc-c++ \
+      make
 
 ENV TARGET=aarch64-unknown-linux-gnu
 
