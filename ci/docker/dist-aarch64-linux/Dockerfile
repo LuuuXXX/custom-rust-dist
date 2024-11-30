@@ -18,6 +18,7 @@ RUN yum update -y && \
       pkgconfig
 
 ENV TARGET=aarch64-unknown-linux-gnu
+RUN rustup target add aarch64-unknown-linux-gnu
 
 COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
@@ -30,6 +31,6 @@ ENV PNPM_HOME=/root/.local/share/pnpm
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 ENV PATH=$PNPM_HOME/bin:$PATH
 
-RUN rustup target add aarch64-unknown-linux-gnu
+RUN cargo install tauri-cli@1.6.4
 
-CMD cargo dev vendor
+CMD cargo dev vendor && cargo dev dist --target=$TARGET

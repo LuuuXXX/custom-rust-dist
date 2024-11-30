@@ -30,4 +30,6 @@ ENV PNPM_HOME=/root/.local/share/pnpm
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 ENV PATH=$PNPM_HOME/bin:$PATH
 
-CMD cargo dev vendor
+RUN cargo install tauri-cli@1.6.4
+
+CMD cargo dev vendor && cargo dev dist --target=$TARGET
