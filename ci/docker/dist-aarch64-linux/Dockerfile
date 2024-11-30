@@ -4,9 +4,9 @@ FROM centos:7
 RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirrorlist.centos.org|' /etc/yum.repos.d/CentOS-Base.repo && \
     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com|' /etc/yum.repos.d/CentOS-Base.repo
 
-RUN yum update -y 
-RUN yum install -y epel-release 
-RUN yum install -y \ 
+RUN yum update -y && \
+    yum install -y epel-release && \
+    yum install -y \ 
       webkitgtk3-devel \
       libappindicator-gtk3-devel \
       librsvg2-devel \
@@ -28,4 +28,4 @@ ENV PATH=$PATH:/opt/node-v16.9.0-linux-arm64/bin
 
 RUN rustup target add aarch64-unknown-linux-gnu
 
-CMD cargo dev vendor --target=$TARGET
+CMD cargo dev vendor
