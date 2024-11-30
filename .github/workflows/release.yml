@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: run build job
-        uses: bash ci/run.sh
+        run: bash ci/run.sh
 
     # - name: setup node
     #   uses: actions/setup-node@v4
