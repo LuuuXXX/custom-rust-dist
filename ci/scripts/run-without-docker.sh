@@ -4,7 +4,7 @@ set -e
 
 # windows
 export target="x86_64-pc-windows-msvc"
-command="cargo build --release --target=$target"
+command="cargo dev vendor && cargo dev dist"
 
 # install nodejs
 # mkdir -p $HOME/node
