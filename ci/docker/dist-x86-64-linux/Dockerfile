@@ -27,8 +27,8 @@ COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
-RUN curl -sL https://nodejs.org/dist/v18.12.0/node-v18.12.0-linux-x64.tar.xz | tar -xJf - -C /opt
-ENV PATH=$PATH:/opt/node-v18.12.0-linux-x64/bin
+RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+ENV PATH=/usr/local/bin:$PATH
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 ENV PNPM_HOME="/root/.local/share/pnpm"
