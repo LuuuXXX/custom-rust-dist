@@ -37,11 +37,10 @@ RUN rustup target add aarch64-unknown-linux-gnu
 #     && yum install -y nodejs
 
 
-RUN cd /usr/local/src && \
-    wget https://nodejs.org/dist/v18.18.0/node-v18.18.0.tar.gz && \
+RUN cd /usr/local/src && wget https://nodejs.org/dist/v18.18.0/node-v18.18.0.tar.gz && \
     tar -xzvf node-v18.18.0.tar.gz && \
     cd node-v18.18.0
-RUN ./configure
+RUN ls -al && ./configure
 RUN make && make install
 
 ENV PATH=/usr/local/bin:$PATH
