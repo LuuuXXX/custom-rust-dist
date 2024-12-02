@@ -13,6 +13,8 @@ RUN yum update -y && \
       patchelf \
       gcc \
       gcc-c++ \
+      glibc-devel \
+      libstdc++-devel \
       make \
       openssl \
       openssl-devel \
