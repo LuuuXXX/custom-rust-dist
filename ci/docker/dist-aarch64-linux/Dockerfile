@@ -33,6 +33,11 @@ RUN curl -sL https://nodejs.org/dist/v18.12.0/node-v18.12.0-linux-x64.tar.xz | t
 ENV PATH=$PATH:/opt/node-v18.12.0-linux-x64/bin
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
+ENV PNPM_HOME="/root/.local/share/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+# 验证 pnpm 安装
+RUN pnpm --version
 
 RUN cargo install tauri-cli@1.6.4
 
