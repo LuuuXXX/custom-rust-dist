@@ -35,7 +35,7 @@ ENV PATH=$PATH:/root/.cargo/bin
 
 
 RUN cd /usr/local/src && \
-    wget https://nodejs.org/dist/v18.x/node-v18.18.0.tar.gz && \
+    wget https://nodejs.org/dist/v18.18.0/node-v18.18.0.tar.gz && \
     tar -xzvf node-v18.18.0.tar.gz && \
     cd node-v18.18.0 && \
     ./configure && \
