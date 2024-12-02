@@ -17,7 +17,8 @@ RUN yum update -y && \
       openssl \
       openssl-devel \
       pkgconfig \
-      perl
+      perl \
+      perl-core
 
 # ENV OPENSSL_DIR=/usr/include/openssl
 ENV TARGET=x86_64-unknown-linux-gnu
