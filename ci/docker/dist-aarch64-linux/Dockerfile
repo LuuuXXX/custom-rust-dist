@@ -16,9 +16,10 @@ RUN yum update -y && \
       make \
       openssl \
       openssl-devel \
-      pkgconfig
+      pkgconfig \
+      perl
 
-ENV OPENSSL_DIR=/usr/include/openssl
+# ENV OPENSSL_DIR=/usr/include/openssl
 ENV TARGET=aarch64-unknown-linux-gnu
 
 COPY ci/scripts/install-rust.sh /scripts/
