@@ -31,8 +31,9 @@ ENV PATH=$PATH:/root/.cargo/bin
 
 RUN rustup target add aarch64-unknown-linux-gnu
 
-RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - \
-    && yum install -y nodejs
+RUN yum -y groupinstall "Development Tools" && yum -y install curl
+RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+RUN yum install -y nodejs
 ENV PATH=/usr/local/bin:$PATH
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
