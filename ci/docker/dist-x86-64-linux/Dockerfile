@@ -29,9 +29,8 @@ COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
-RUN yum -y groupinstall "Development Tools" && yum -y install curl
-RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
-RUN yum install -y nodejs
+RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - \
+    && yum install -y nodejs
 ENV PATH=/usr/local/bin:$PATH
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
@@ -40,4 +39,4 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN cargo install tauri-cli@1.6.4
 
-CMD cargo dev vendor && cd installer && pnpm i && cd - && cargo dev dist --target=$TARGET
+CMD cargo dev vendor && cd installer && rm pnpm-lock.yaml && pnpm i && cd - && cargo dev dist --target=$TARGET
