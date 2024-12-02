@@ -18,8 +18,7 @@ RUN yum update -y && \
       openssl-devel \
       pkgconfig
 
-RUN unset OPENSSL_DIR
-
+ENV OPENSSL_DIR=/usr/include/openssl
 ENV TARGET=x86_64-unknown-linux-gnu
 
 COPY ci/scripts/install-rust.sh /scripts/
