@@ -18,6 +18,8 @@ RUN yum update -y && \
       openssl-devel \
       pkgconfig
 
+RUN unset OPENSSL_DIR
+
 ENV TARGET=aarch64-unknown-linux-gnu
 
 COPY ci/scripts/install-rust.sh /scripts/
