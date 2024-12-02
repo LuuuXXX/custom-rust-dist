@@ -34,7 +34,7 @@ ENV PATH=$PATH:/root/.cargo/bin
 
 
 RUN cd /usr/local/src && \
-    wget https://nodejs.org/dist/v18.x/node-v18.18.0.tar.gz && \  # 替换成实际需要的版本
+    wget https://nodejs.org/dist/v18.x/node-v18.18.0.tar.gz && \
     tar -xzvf node-v18.18.0.tar.gz && \
     cd node-v18.18.0 && \
     ./configure && \
