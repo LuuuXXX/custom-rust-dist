@@ -14,6 +14,7 @@ RUN yum update -y && \
       gcc \
       gcc-c++ \
       make \
+      openssl \
       openssl-devel \
       pkgconfig
 
