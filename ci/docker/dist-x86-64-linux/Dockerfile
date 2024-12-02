@@ -30,7 +30,7 @@ ENV PATH=$PATH:/root/.cargo/bin
 RUN curl -sL https://nodejs.org/dist/v18.12.0/node-v18.12.0-linux-x64.tar.xz | tar -xJf - -C /opt
 ENV PATH=$PATH:/opt/node-v18.12.0-linux-x64/bin
 
-RUN npm install -g pnpm
+RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 RUN cargo install tauri-cli@1.6.4
 
