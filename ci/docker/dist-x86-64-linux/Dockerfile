@@ -28,7 +28,7 @@ RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
 RUN curl -sL https://nodejs.org/dist/v20.0.0/node-v20.0.0-linux-x64.tar.xz | tar -xJf - -C /opt
-ENV PATH=$PATH:/opt/node-v16.9.0-linux-x64/bin
+ENV PATH=$PATH:/opt/node-v20.0.0-linux-x64/bin
 
 RUN npm install -g pnpm
 
