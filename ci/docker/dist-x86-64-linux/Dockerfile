@@ -35,11 +35,11 @@ ENV PATH=$PATH:/root/.cargo/bin
 #     && yum install -y nodejs
 
 
-RUN cd /usr/local/src && wget https://nodejs.org/dist/v18.18.0/node-v18.18.0.tar.gz && \
-    tar -xzvf node-v18.18.0.tar.gz && \
-    cd node-v18.18.0
-RUN ls -al && ./configure
-RUN make && make install
+RUN curl -o /usr/local/src/node-v18.18.0.tar.gz https://nodejs.org/dist/v18.18.0/node-v18.18.0.tar.gz && \
+    tar -xzvf /usr/local/src/node-v18.18.0.tar.gz -C /usr/local/src && \
+    cd /usr/local/src/node-v18.18.0 && \
+    ls -al && ./configure && \
+    make && make install
 
 ENV PATH=/usr/local/bin:$PATH
 
