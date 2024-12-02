@@ -29,15 +29,13 @@ COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
-RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - \
+RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - \
     && yum install -y nodejs
 ENV PATH=/usr/local/bin:$PATH
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 ENV PNPM_HOME="/root/.local/share/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-
-RUN pnpm add esbuild@0.23.0 --save-dev
 
 RUN cargo install tauri-cli@1.6.4
 
