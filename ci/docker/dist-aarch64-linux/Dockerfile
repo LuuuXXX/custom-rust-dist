@@ -29,8 +29,8 @@ ENV PATH=$PATH:/root/.cargo/bin
 
 RUN rustup target add aarch64-unknown-linux-gnu
 
-RUN curl -sL https://nodejs.org/dist/v20.0.0/node-v20.0.0-linux-x64.tar.xz | tar -xJf - -C /opt
-ENV PATH=$PATH:/opt/node-v20.0.0-linux-x64/bin
+RUN curl -sL https://nodejs.org/dist/v18.12.0/node-v18.12.0-linux-x64.tar.xz | tar -xJf - -C /opt
+ENV PATH=$PATH:/opt/node-v18.12.0-linux-x64/bin
 
 RUN npm install -g pnpm
 
