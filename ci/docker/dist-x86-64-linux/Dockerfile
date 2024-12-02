@@ -29,7 +29,7 @@ COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
-RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - \
+RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - \
     && yum install -y nodejs
 ENV PATH=/usr/local/bin:$PATH
 
