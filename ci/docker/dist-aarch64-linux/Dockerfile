@@ -21,7 +21,8 @@ RUN yum update -y && \
       pkgconfig \
       perl \
       perl-core \
-      wget
+      wget \
+      python3
 
 # ENV OPENSSL_DIR=/usr/include/openssl
 ENV TARGET=aarch64-unknown-linux-gnu
@@ -39,10 +40,9 @@ RUN rustup target add aarch64-unknown-linux-gnu
 RUN cd /usr/local/src && \
     wget https://nodejs.org/dist/v18.18.0/node-v18.18.0.tar.gz && \
     tar -xzvf node-v18.18.0.tar.gz && \
-    cd node-v18.18.0 && \
-    ./configure && \
-    make && \
-    make install
+    cd node-v18.18.0
+RUN ./configure
+RUN make && make install
 
 ENV PATH=/usr/local/bin:$PATH
 
