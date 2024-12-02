@@ -31,8 +31,18 @@ ENV PATH=$PATH:/root/.cargo/bin
 
 RUN rustup target add aarch64-unknown-linux-gnu
 
-RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - \
-    && yum install -y nodejs
+# RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - \
+#     && yum install -y nodejs
+
+
+RUN cd /usr/local/src && \
+    wget https://nodejs.org/dist/v18.x/node-v18.18.0.tar.gz && \  # 替换成实际需要的版本
+    tar -xzvf node-v18.18.0.tar.gz && \
+    cd node-v18.18.0 && \
+    ./configure && \
+    make && \
+    make install
+
 ENV PATH=/usr/local/bin:$PATH
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
