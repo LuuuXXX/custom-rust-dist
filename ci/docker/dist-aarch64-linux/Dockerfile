@@ -8,7 +8,7 @@ RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirror
 # 更新系统并安装必要的软件包
 RUN yum update -y && \
     yum install -y epel-release && \
-    yum groupinstall -y "Development Tools" && \  # 安装开发工具包
+    yum groupinstall -y "Development Tools" && \
     yum install -y \
         webkitgtk3-devel \
         libappindicator-gtk3-devel \
