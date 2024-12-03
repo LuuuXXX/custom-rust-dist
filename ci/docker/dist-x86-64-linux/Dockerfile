@@ -6,9 +6,9 @@ RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirror
     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com|' /etc/yum.repos.d/CentOS-Base.repo
 
 # 更新系统并安装必要的软件包
-RUN yum groupinstall "Development Tools" && \
-    yum install epel-release && \
-    yum install webkitgtk4-devel \
+RUN yum groupinstall -y "Development Tools" && \
+    yum install -y epel-release && \
+    yum install -y webkitgtk4-devel \
       curl \
       wget \
       file \
