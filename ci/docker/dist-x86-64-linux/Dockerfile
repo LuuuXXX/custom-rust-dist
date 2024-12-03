@@ -45,9 +45,9 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN cargo install tauri-cli@1.6.4
 
 # 执行项目构建
-CMD cargo dev vendor && \
-    cd installer && \
-    rm -rf node_modules pnpm-lock.yaml && \
-    pnpm i && \
-    cd - && \
-    cargo dev dist --target=$TARGET
+# CMD cargo dev vendor && \
+#     cd installer && \
+#     pnpm i && \
+#     cd - && \
+#     cargo dev dist --target=$TARGET
+CMD cargo dev vendor && cargo dev dist
