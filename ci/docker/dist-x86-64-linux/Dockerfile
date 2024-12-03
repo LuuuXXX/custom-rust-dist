@@ -50,4 +50,7 @@ RUN cargo install tauri-cli@1.6.4
 #     pnpm i && \
 #     cd - && \
 #     cargo dev dist --target=$TARGET
-CMD cargo dev vendor && pnpm build && cargo dev dist
+CMD cargo dev vendor && \
+    cd installer && pnpm install && cd - && \
+    cd - && \
+    cargo dev dist --target=$TARGET
