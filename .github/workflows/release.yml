@@ -1,13 +1,19 @@
 name: Release
 
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: tag name
+#   push:
+#     tags:
+#       - v*.*.*
+
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: tag name
   push:
-    tags:
-      - v*.*.*
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   release:
