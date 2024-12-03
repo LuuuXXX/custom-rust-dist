@@ -15,7 +15,9 @@ RUN yum groupinstall -y "Development Tools" && \
       openssl-devel \
       gtk3-devel \
       libappindicator-gtk3-devel \
-      librsvg2-devel
+      librsvg2-devel \
+      perl \
+      perl-core
 
 
 # 安装 Rust
