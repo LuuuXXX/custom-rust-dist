@@ -26,6 +26,7 @@ ENV PATH=$PATH:/root/.cargo/bin
 RUN rustup target add aarch64-unknown-linux-gnu
 
 # 安装 Node.js 18.x
+RUN mkdir /opt/nodejs
 RUN curl -fsSL https://unofficial-builds.nodejs.org/download/release/v18.19.0/node-v18.19.0-linux-x64-glibc-217.tar.gz -o /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz \
     && tar -xzf /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz -C /opt/nodejs --strip-components=1 \
     && rm /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz
