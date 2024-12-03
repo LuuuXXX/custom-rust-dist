@@ -6,25 +6,17 @@ RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirror
     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com|' /etc/yum.repos.d/CentOS-Base.repo
 
 # 更新系统并安装必要的软件包
-RUN yum update -y && \
-    yum install -y epel-release && \
-    yum install -y \
-        webkitgtk3-devel \
-        libappindicator-gtk3-devel \
-        librsvg2-devel \
-        patchelf \
-        gcc \
-        gcc-c++ \
-        glibc-devel \
-        libstdc++-devel \
-        make \
-        openssl \
-        openssl-devel \
-        pkgconfig \
-        perl \
-        perl-core \
-        wget \
-        python3
+RUN yum groupinstall "Development Tools" && \
+    yum install epel-release && \
+    yum install webkitgtk4-devel \
+      curl \
+      wget \
+      file \
+      openssl-devel \
+      gtk3-devel \
+      libappindicator-gtk3-devel \
+      librsvg2-devel
+
 
 # 安装 Rust
 COPY ci/scripts/install-rust.sh /scripts/
@@ -33,26 +25,16 @@ ENV PATH=$PATH:/root/.cargo/bin
 
 RUN rustup target add aarch64-unknown-linux-gnu
 
-# 安装 Node.js 16.x
-RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - \
-    && yum install -y nodejs
-ENV PATH=/usr/local/bin:$PATH
-
-# 安装 pnpm
-RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
-ENV PNPM_HOME="/root/.local/share/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+# 安装 Node.js 18.x
+RUN curl -fsSL https://unofficial-builds.nodejs.org/download/release/v18.19.0/node-v18.19.0-linux-x64-glibc-217.tar.gz -o /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz \
+    && tar -xzf /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz -C /opt/nodejs --strip-components=1 \
+    && rm /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz
+ENV PATH=/opt/nodejs/bin:$PATH
+RUN npm set strict-ssl false && npm install -g pnpm
 
 # 安装 Tauri CLI
 RUN cargo install tauri-cli@1.6.4
 
 # 执行项目构建
-# CMD cargo dev vendor && \
-#     cd installer && \
-#     pnpm i && \
-#     cd - && \
-#     cargo dev dist --target=$TARGET
 CMD cargo dev vendor && \
-    cd installer && pnpm install && cd - && \
-    cd - && \
-    cargo dev dist --target=$TARGET
+    cargo dev dist
