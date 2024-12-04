@@ -54,13 +54,13 @@ jobs:
           export LANG=C.UTF-8
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
           sudo mkdir ./dist/binaries/
-          mv ./dist/${{ matrix.target-gnu }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target-gnu }}.exe
-          mv ./dist/${{ matrix.target }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target }}.exe
+          sudo mv ./dist/${{ matrix.target-gnu }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target-gnu }}.exe
+          sudo mv ./dist/${{ matrix.target }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target }}.exe
           cd ./dist/${{ matrix.target-gnu }}
-          rm -f $NAME-${{ matrix.target-gnu }}/$NAME-installer-cli.exe
+          sudo rm -f $NAME-${{ matrix.target-gnu }}/$NAME-installer-cli.exe
           7z a ../binaries/$NAME-${{ matrix.target-gnu }}.zip $NAME-${{ matrix.target-gnu }}
           cd ../${{ matrix.target }}
-          rm -f $NAME-${{ matrix.target }}/$NAME-installer-cli.exe
+          sudo rm -f $NAME-${{ matrix.target }}/$NAME-installer-cli.exe
           7z a ../binaries/$NAME-${{ matrix.target }}.zip $NAME-${{ matrix.target }}
 
       - name: prepare packages (unix)
@@ -69,8 +69,8 @@ jobs:
           set -x
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
           sudo mkdir ./dist/binaries/
-          mv ./dist/${{ matrix.target }}/$NAME-installer-cli ./dist/binaries/$NAME-installer-cli-${{ matrix.target }}
-          mv ./dist/${{ matrix.target }}/$NAME-installer ./dist/binaries/$NAME-installer-${{ matrix.target }}
+          sudo mv ./dist/${{ matrix.target }}/$NAME-installer-cli ./dist/binaries/$NAME-installer-cli-${{ matrix.target }}
+          sudo mv ./dist/${{ matrix.target }}/$NAME-installer ./dist/binaries/$NAME-installer-${{ matrix.target }}
           cd ./dist/${{ matrix.target }}
           tar cjf ../binaries/$NAME-${{ matrix.target }}.tar.xz $NAME-${{ matrix.target }}
 
