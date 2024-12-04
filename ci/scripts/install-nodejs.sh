@@ -2,7 +2,7 @@
 
 NODE_VERSION="v18.19.0"
 
-if grep -qE '/(docker|kubepods)' /proc/1/cgroup 2>/dev/null; then
+if [ "$(uname -s)" = "Linux" ]; then
     mkdir /opt/nodejs
     NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
     DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
