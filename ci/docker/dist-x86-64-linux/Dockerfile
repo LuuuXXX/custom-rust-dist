@@ -26,10 +26,8 @@ RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
 # 安装 Node.js 18.x
-RUN mkdir /opt/nodejs
-RUN curl -fsSL https://unofficial-builds.nodejs.org/download/release/v18.19.0/node-v18.19.0-linux-x64-glibc-217.tar.gz -o /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz \
-    && tar -xzf /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz -C /opt/nodejs --strip-components=1 \
-    && rm /tmp/node-v18.19.0-linux-x64-glibc-217.tar.gz
+COPY ci/scripts/install-nodejs.sh /scripts/
+RUN . /scripts/install-nodejs.sh
 ENV PATH=/opt/nodejs/bin:$PATH
 RUN npm set strict-ssl false && npm install -g pnpm
 
