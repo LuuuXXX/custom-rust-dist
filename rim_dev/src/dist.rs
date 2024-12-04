@@ -60,7 +60,7 @@ impl DistWorker<'_> {
         dest_dir.push(target);
 
         let mut cmd = Command::new("cargo");
-        cmd.env("HOST_TRIPPLE", target);
+        cmd.env("TARGET", target);
         cmd.args(self.build_args);
 
         if noweb {
