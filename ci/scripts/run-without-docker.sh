@@ -3,7 +3,7 @@
 set -e
 
 # windows
-export target="x86_64-pc-windows-msvc"
+export TARGET="x86_64-pc-windows-msvc"
 
 # 安装 Rust
 sh ci/scripts/install-rust.sh

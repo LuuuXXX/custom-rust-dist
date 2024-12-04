@@ -19,7 +19,6 @@ RUN yum groupinstall -y "Development Tools" && \
       perl \
       perl-core
 
-
 # 安装 Rust
 COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
