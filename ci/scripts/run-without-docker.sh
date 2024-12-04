@@ -10,7 +10,7 @@ sh ci/scripts/install-rust.sh
 
 # 安装 nodejs 18.x
 NODE_VERSION="v18.0.0"
-NODE_URL="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-x64.zip"
+NODE_URL="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-win-x64.zip"
 USER_NODEJS_PATH="/c/Users/$(whoami)/nodejs"
 DOWNLOAD_PATH="$USER_NODEJS_PATH/node-$NODE_VERSION-x64.zip"
 mkdir -p "$USER_NODEJS_PATH"
