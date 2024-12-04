@@ -53,7 +53,7 @@ jobs:
           set -x
           export LANG=C.UTF-8
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
-          mkdir ./dist/binaries/
+          sudo mkdir ./dist/binaries/
           mv ./dist/${{ matrix.target-gnu }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target-gnu }}.exe
           mv ./dist/${{ matrix.target }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target }}.exe
           cd ./dist/${{ matrix.target-gnu }}
@@ -68,7 +68,7 @@ jobs:
         run: |
           set -x
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
-          mkdir ./dist/binaries/
+          sudo mkdir ./dist/binaries/
           mv ./dist/${{ matrix.target }}/$NAME-installer-cli ./dist/binaries/$NAME-installer-cli-${{ matrix.target }}
           mv ./dist/${{ matrix.target }}/$NAME-installer ./dist/binaries/$NAME-installer-${{ matrix.target }}
           cd ./dist/${{ matrix.target }}
