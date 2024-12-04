@@ -2,7 +2,7 @@
 
 NODE_VERSION="v18.19.0"
 
-if [ -f /.dockerenv ]; then
+if grep -q 'docker' /proc/1/sched 2>/dev/null; then
     mkdir /opt/nodejs
     NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
     DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
