@@ -43,6 +43,12 @@ jobs:
       - name: checkout the source code
         uses: actions/checkout@v4
 
+      - name: Set up QEMU for ARM64
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: aarch64
+
       - name: run build job
         run: bash ci/run.sh
 
