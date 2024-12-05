@@ -2,11 +2,8 @@
 FROM arm64v8/centos:7
 
 # 更新 CentOS 镜像源为清华大学 TUNA 镜像源
-RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-    -e 's|^#baseurl=http://mirror.centos.org/altarch/|baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos-altarch/|g' \
-    -e 's|^#baseurl=http://mirror.centos.org/$contentdir/|baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos-altarch/|g' \
-    -i.bak \
-    /etc/yum.repos.d/CentOS-*.repo
+RUN cp -a /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak && \
+    wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/repository/conf/CentOS-AltArch-7.repo
 
 # 更新系统并安装必要的软件包
 RUN yum groupinstall -y "Development Tools" && \
