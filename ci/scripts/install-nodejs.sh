@@ -6,8 +6,10 @@ if [ "$(uname -s)" = "Linux" ]; then
     ARCH=$(uname -m)
     mkdir /opt/nodejs
     if [ "$ARCH" == "aarch64" ]; then
-        NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-armv6l.tar.gz"
-        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-armv6l.tar.gz"
+        # NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-armv6l.tar.gz"
+        # DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-armv6l.tar.gz"
+        NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
+        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
     else
         NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
         DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
