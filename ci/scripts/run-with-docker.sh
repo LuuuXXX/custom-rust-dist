@@ -33,9 +33,9 @@ if [ -f "$docker_dir/$image/Dockerfile" ]; then
     dockerfile="$docker_dir/$image/Dockerfile"
     # build docker image.
     if [[ "$image" == *"aarch64"* ]]; then
-        docker buildx build --platform linux/arm64 --rm -t rim-ci -f "$dockerfile" .  
+        docker buildx build --network host --platform linux/arm64 --rm -t rim-ci -f "$dockerfile" .  
     else
-        docker buildx build --rm -t rim-ci -f "$dockerfile" .
+        docker buildx build --network host --rm -t rim-ci -f "$dockerfile" .
     fi
 else
     echo "Invalid docker image: $image"
