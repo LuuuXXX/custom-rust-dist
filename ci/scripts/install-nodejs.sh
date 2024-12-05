@@ -3,9 +3,15 @@
 NODE_VERSION="v18.19.0"
 
 if [ "$(uname -s)" = "Linux" ]; then
+    ARCH=$(uname -m)
     mkdir /opt/nodejs
-    NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
-    DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
+    if [ "$ARCH" == "aarch64" ]; then
+        NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-armv6l.tar.gz"
+        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-armv6l.tar.gz"
+    else
+        NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
+        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
+    fi
     curl -L -o "$DOWNLOAD_PATH" "$NODE_URL"
     tar -xzf "$DOWNLOAD_PATH" -C /opt/nodejs --strip-components=1
     rm "$DOWNLOAD_PATH"

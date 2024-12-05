@@ -1,5 +1,5 @@
-# 使用阿里云的 CentOS 镜像源
-FROM centos:7
+# 使用阿里云的 CentOS 镜像源（ARM 版本）
+FROM arm64v8/centos:7
 
 # 更新并设置镜像源为阿里云
 RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirrorlist.centos.org|' /etc/yum.repos.d/CentOS-Base.repo && \
@@ -19,12 +19,11 @@ RUN yum groupinstall -y "Development Tools" && \
       perl \
       perl-core
 
-# 安装 Rust
+# 安装 Rust（确保是适用于 ARM 的目标）
 COPY ci/scripts/install-rust.sh /scripts/
 RUN . /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
-RUN rustup target add aarch64-unknown-linux-gnu
 ENV HOST_TRIPPLE aarch64-unknown-linux-gnu
 
 # 安装 Node.js 18.x
