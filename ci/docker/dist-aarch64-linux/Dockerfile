@@ -1,9 +1,12 @@
 # 使用阿里云的 CentOS 镜像源（ARM 版本）
 FROM arm64v8/centos:7
 
-# 更新并设置镜像源为阿里云
-# RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirrorlist.centos.org|' /etc/yum.repos.d/CentOS-Base.repo && \
-#     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com|' /etc/yum.repos.d/CentOS-Base.repo
+# 更新并设置镜像源为阿里云（针对 ARM 架构）
+RUN sed -i 's|^mirrorlist=http://mirrorlist.centos.org|#mirrorlist=http://mirrorlist.centos.org|' /etc/yum.repos.d/CentOS-Base.repo && \
+    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com/centos/7/os/aarch64|' /etc/yum.repos.d/CentOS-Base.repo && \
+    sed -i 's|^#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com/centos/7/updates/aarch64|' /etc/yum.repos.d/CentOS-Base.repo && \
+    sed -i 's|^#baseurl=http://mirror.centos.org|baseurl=http://mirrors.aliyun.com/centos/7/extra/aarch64|' /etc/yum.repos.d/CentOS-Base.repo
+
 
 # 更新系统并安装必要的软件包
 RUN yum groupinstall -y "Development Tools" && \
