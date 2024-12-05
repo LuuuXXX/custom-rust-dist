@@ -164,27 +164,23 @@ pub fn dist(mode: DistMode, binary_only: bool) -> Result<()> {
     }
 
     for worker in workers {
-        // cfg_if! {
-        //     if #[cfg(all(windows, target_arch = "x86_64"))] {
-        //         let msvc_target = "x86_64-pc-windows-msvc";
-        //         let gnu_target = "x86_64-pc-windows-gnu";
+        cfg_if! {
+            if #[cfg(all(windows, target_arch = "x86_64"))] {
+                let msvc_target = "x86_64-pc-windows-msvc";
+                let gnu_target = "x86_64-pc-windows-gnu";
 
-        //         worker.dist_net_installer(Some(msvc_target))?;
-        //         worker.dist_net_installer(Some(gnu_target))?;
-        //         if !binary_only {
-        //             worker.dist_noweb_installer(Some(msvc_target))?;
-        //             worker.dist_noweb_installer(Some(gnu_target))?;
-        //         }
-        //     } else {
-        //         worker.dist_net_installer(None)?;
-        //         if !binary_only {
-        //             worker.dist_noweb_installer(None)?;
-        //         }
-        //     }
-        // }
-        worker.dist_net_installer(None)?;
-        if !binary_only {
-            worker.dist_noweb_installer(None)?;
+                worker.dist_net_installer(Some(msvc_target))?;
+                worker.dist_net_installer(Some(gnu_target))?;
+                if !binary_only {
+                    worker.dist_noweb_installer(Some(msvc_target))?;
+                    worker.dist_noweb_installer(Some(gnu_target))?;
+                }
+            } else {
+                worker.dist_net_installer(None)?;
+                if !binary_only {
+                    worker.dist_noweb_installer(None)?;
+                }
+            }
         }
     }
 
