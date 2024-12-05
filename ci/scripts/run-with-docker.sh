@@ -32,10 +32,18 @@ docker_dir="ci/docker"
 if [ -f "$docker_dir/$image/Dockerfile" ]; then
     dockerfile="$docker_dir/$image/Dockerfile"
     # build docker image.
-    docker buildx build --rm -t rim-ci -f "$dockerfile" .
+    if [[ "$image" == *"aarch64"* ]]; then
+        docker buildx build --platform linux/arm64 --rm -t rim-ci -f "$dockerfile" .  
+    else
+        docker buildx build --rm -t rim-ci -f "$dockerfile" .
+    fi
 else
     echo "Invalid docker image: $image"
 fi
 
 # run ther docker image.
-docker run --workdir /checkout/obj -v "$source_dir:/checkout/obj" --init --rm rim-ci
+if [[ "$image" == *"aarch64"* ]]; then
+    docker run --platform linux/arm64 --workdir /checkout/obj -v "$source_dir:/checkout/obj" --init --rm rim-ci 
+else
+    docker run --workdir /checkout/obj -v "$source_dir:/checkout/obj" --init --rm rim-ci
+fi
