@@ -9,9 +9,6 @@ fn main() {
         println!("cargo:rerun-if-changed={file}");
     }
 
-    let build_triple = env::var("TARGET").unwrap_or(env::var("HOST").unwrap());
-    println!("cargo:rustc-env=BUILD_TRIPPLE={build_triple}");
-
     let target = env::var(TARGET_OVERRIDE_ENV).unwrap_or(env::var("TARGET").unwrap());
     println!("cargo:rustc-env=TARGET={target}");
 }
