@@ -34,10 +34,13 @@ jobs:
             os: ubuntu-20.04
             target: x86_64-unknown-linux-gnu
 
-          - name: dist-x86-64-windows
+          - name: dist-x86-64-windows-msvc
             os: windows-latest
             target: x86_64-pc-windows-msvc
-            target-gnu: x86_64-pc-windows-gnu
+
+          - name: dist-x86-64-windows-gnu
+            os: windows-latest
+            target: x86_64-pc-windows-gnu
 
     steps:
       - name: checkout the source code
@@ -54,11 +57,7 @@ jobs:
           export LANG=C.UTF-8
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
           mkdir ./dist/binaries/
-          mv ./dist/${{ matrix.target-gnu }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target-gnu }}.exe
           mv ./dist/${{ matrix.target }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target }}.exe
-          cd ./dist/${{ matrix.target-gnu }}
-          rm -f $NAME-${{ matrix.target-gnu }}/$NAME-installer-cli.exe
-          7z a ../binaries/$NAME-${{ matrix.target-gnu }}.zip $NAME-${{ matrix.target-gnu }}
           cd ../${{ matrix.target }}
           rm -f $NAME-${{ matrix.target }}/$NAME-installer-cli.exe
           7z a ../binaries/$NAME-${{ matrix.target }}.zip $NAME-${{ matrix.target }}
