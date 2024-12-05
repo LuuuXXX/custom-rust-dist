@@ -28,19 +28,19 @@ jobs:
         include:
           - name: dist-aarch64-linux
             os: ubuntu-20.04
-            target: aarch64-unknown-linux-gnu
+            TARGET: aarch64-unknown-linux-gnu
 
           - name: dist-x86-64-linux
             os: ubuntu-20.04
-            target: x86_64-unknown-linux-gnu
+            TARGET: x86_64-unknown-linux-gnu
 
-          - name: dist-x86-64-windows-msvc
+          - name: dist-windows-msvc
             os: windows-latest
-            target: x86_64-pc-windows-msvc
+            TARGET: x86_64-pc-windows-msvc
 
-          - name: dist-x86-64-windows-gnu
+          - name: dist-windows-gnu
             os: windows-latest
-            target: x86_64-pc-windows-gnu
+            TARGET: x86_64-pc-windows-gnu
 
     steps:
       - name: checkout the source code
