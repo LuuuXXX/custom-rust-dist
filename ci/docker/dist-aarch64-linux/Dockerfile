@@ -27,8 +27,10 @@ ENV PATH=$PATH:/root/.cargo/bin
 ENV HOST_TRIPPLE aarch64-unknown-linux-gnu
 
 # 安装 Node.js 18.x
-COPY ci/scripts/install-nodejs.sh /scripts/
-RUN . /scripts/install-nodejs.sh
+# COPY ci/scripts/install-nodejs.sh /scripts/
+# RUN . /scripts/install-nodejs.sh
+RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - && \
+    yum install -y nodejs
 ENV PATH=/opt/nodejs/bin:$PATH
 RUN npm set strict-ssl false && npm install -g pnpm
 
