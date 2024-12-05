@@ -9,7 +9,7 @@ export TARGET="x86_64-pc-windows-msvc"
 sh ci/scripts/install-rust.sh
 
 # 安装 nodejs 18.x
-sh ci/scripts/install-node.sh
+sh ci/scripts/install-nodejs.sh
 
 # 安装 pnpm
 npm set strict-ssl false && npm install -g pnpm
