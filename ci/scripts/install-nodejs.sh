@@ -4,6 +4,7 @@ NODE_VERSION="v18.19.0"
 
 if [ "$(uname -s)" = "Linux" ]; then
     ARCH=$(uname -m)
+    echo "Arch: $ARCH"
     mkdir /opt/nodejs
     if [ "$ARCH" == "aarch64" ]; then
         NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-armv6l.tar.gz"
