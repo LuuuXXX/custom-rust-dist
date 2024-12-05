@@ -3,13 +3,13 @@
 set -e
 
 # windows
-export HOST_TRIPPLE="x86_64-pc-windows-msvc"
+export TARGET="x86_64-pc-windows-msvc"
 
 # 安装 Rust
 sh ci/scripts/install-rust.sh
 
 # 安装 nodejs 18.x
-sh ci/scripts/install-nodejs.sh
+sh ci/scripts/install-node
 
 # 安装 pnpm
 npm set strict-ssl false && npm install -g pnpm
