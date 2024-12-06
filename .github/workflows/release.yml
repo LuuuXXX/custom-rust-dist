@@ -59,7 +59,7 @@ jobs:
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
           mkdir ./dist/binaries/
           mv ./dist/${{ matrix.target }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target }}.exe
-          cd ../${{ matrix.target }}
+          cd ./dist/${{ matrix.target }}
           rm -f $NAME-${{ matrix.target }}/$NAME-installer-cli.exe
           7z a ../binaries/$NAME-${{ matrix.target }}.zip $NAME-${{ matrix.target }}
 
