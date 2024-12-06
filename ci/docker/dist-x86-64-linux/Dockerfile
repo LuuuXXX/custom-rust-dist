@@ -3,7 +3,8 @@ FROM ubuntu:20.04
 
 # 更新系统并安装必要的软件包
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y build-essential \
+    apt-get install -y --no-install-recomends \
+      build-essential \
       curl \
       wget \
       file \

@@ -82,20 +82,13 @@ impl DistWorker<'_> {
     }
 
     fn dist_net_installer(&self, specific_target: Option<&str>) -> Result<()> {
-        println!("specific_target {:?}", specific_target);
-        println!("environment {:?}", env!("TARGET"));
         let target = specific_target.unwrap_or(env!("TARGET"));
-        println!("target {:?}", target);
-
         self.dist_common_(target, false)?;
         Ok(())
     }
 
     fn dist_noweb_installer(&self, specific_target: Option<&str>) -> Result<()> {
-        println!("specific_target {:?}", specific_target);
-        println!("environment {:?}", env!("TARGET"));
         let target = specific_target.unwrap_or(env!("TARGET"));
-        println!("target {:?}", target);
         let dest_pkg_dir = self.dist_common_(target, true)?.join("packages");
         ensure_dir(&dest_pkg_dir)?;
 
