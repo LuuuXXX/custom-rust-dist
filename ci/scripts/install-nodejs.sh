@@ -8,11 +8,11 @@ if [ "$(uname -s)" = "Linux" ]; then
     if [ "$ARCH" == "aarch64" ]; then
         # NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-armv6l.tar.gz"
         # DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-armv6l.tar.gz"
-        NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
-        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
+        NODE_URL="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-arm64.tar.gz"
+        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-arm64.tar.gz"
     else
-        NODE_URL="https://unofficial-builds.nodejs.org/download/release/$NODE_VERSION/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
-        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64-glibc-217.tar.gz"
+        NODE_URL="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz"
+        DOWNLOAD_PATH="/tmp/node-$NODE_VERSION-linux-x64.tar.gz"
     fi
     echo "Downloading $NODE_URL"
     curl -L -o "$DOWNLOAD_PATH" "$NODE_URL"

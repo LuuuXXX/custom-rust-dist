@@ -23,8 +23,9 @@ ENV PATH=$PATH:/root/.cargo/bin
 ENV HOST_TRIPPLE x86_64-unknown-linux-gnu
 
 # 安装 Node.js 18.x
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
+COPY ci/scripts/install-nodejs.sh /scripts/
+RUN . /scripts/install-nodejs.sh
+ENV PATH=/opt/nodejs/bin:$PATH
 RUN npm set strict-ssl false && npm install -g pnpm
 
 # 安装 Tauri CLI
