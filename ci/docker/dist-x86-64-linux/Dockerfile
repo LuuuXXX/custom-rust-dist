@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 
 # 更新系统并安装必要的软件包
-RUN apt-get update && apt-get upgrade && \
+RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y build-essential \
       curl \
       wget \
