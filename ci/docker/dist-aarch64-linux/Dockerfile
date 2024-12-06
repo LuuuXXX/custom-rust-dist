@@ -2,8 +2,8 @@
 FROM arm64v8/ubuntu:20.04
 
 # 更新系统并安装必要的软件包
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y --no-install-recomends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
       build-essential \
       curl \
       wget \
