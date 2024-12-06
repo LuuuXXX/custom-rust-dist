@@ -1,5 +1,5 @@
-# 使用 Ubuntu 18.04 作为基础镜像
-FROM ubuntu:18.04
+# 使用 Ubuntu 20.04 作为基础镜像
+FROM ubuntu:20.04
 
 # 更新系统并安装必要的软件包
 RUN apt-get update && apt-get upgrade -y && \
@@ -23,11 +23,7 @@ ENV PATH=$PATH:/root/.cargo/bin
 ENV HOST_TRIPPLE x86_64-unknown-linux-gnu
 
 # 安装 Node.js 18.x
-# COPY ci/scripts/install-nodejs.sh /scripts/
-# RUN . /scripts/install-nodejs.sh
-# ENV PATH=/opt/nodejs/bin:$PATH
-# RUN npm set strict-ssl false && npm install -g pnpm
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs
 RUN npm set strict-ssl false && npm install -g pnpm
 
