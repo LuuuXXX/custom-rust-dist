@@ -13,7 +13,6 @@ RUN apt-get update && \
       libappindicator3-dev \
       librsvg2-dev \
       perl \
-      nodejs \
       npm
 
 # 安装 Rust（确保是适用于 ARM 的目标）

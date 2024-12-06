@@ -13,7 +13,6 @@ RUN apt-get update && \
       libappindicator3-dev \
       librsvg2-dev \
       perl \
-      nodejs \
       npm
 
 # 安装 Rust
