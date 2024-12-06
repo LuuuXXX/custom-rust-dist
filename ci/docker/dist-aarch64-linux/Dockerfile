@@ -12,8 +12,7 @@ RUN apt-get update && \
       libwebkit2gtk-4.0-dev \
       libappindicator3-dev \
       librsvg2-dev \
-      perl \
-      npm
+      perl
 
 # 安装 Rust（确保是适用于 ARM 的目标）
 COPY ci/scripts/install-rust.sh /scripts/
