@@ -1,6 +1,9 @@
 # 使用 Ubuntu 20.04 作为基础镜像
 FROM ubuntu:20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
 # 更新系统并安装必要的软件包
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
