@@ -1,11 +1,11 @@
 # 使用 Ubuntu 20.04 ARM 版本作为基础镜像
 FROM arm64v8/ubuntu:20.04
 
-ENV TZ=UTC
+ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新系统并安装必要的软件包
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
       build-essential \
       curl \
       wget \
