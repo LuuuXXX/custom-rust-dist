@@ -1,7 +1,7 @@
 # 使用 Ubuntu 20.04 ARM 版本作为基础镜像
 FROM arm64v8/ubuntu:20.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
 
 # 更新系统并安装必要的软件包
 RUN apt-get update && \
