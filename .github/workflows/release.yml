@@ -31,10 +31,7 @@ jobs:
           - name: dist-windows-msvc
             os: windows-latest
             target: x86_64-pc-windows-msvc
-          
-          - name: dist-windows-gnu
-            os: windows-latest
-            target: x86_64-pc-windows-gnu
+            target-gnu: x86_64-pc-windows-gnu
 
     steps:
       - name: checkout the source code
@@ -55,11 +52,14 @@ jobs:
         run: |
           set -x
           export LANG=C.UTF-8
-          export HOST_TRIPPLE=${{ matrix.target }}
           NAME=$(grep -Po 'vendor_en": "\K[^"]*' locales/en.json)
           mkdir ./dist/binaries/
+          mv ./dist/${{ matrix.target-gnu }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target-gnu }}.exe
           mv ./dist/${{ matrix.target }}/$NAME-installer.exe ./dist/binaries/$NAME-installer-${{ matrix.target }}.exe
-          cd ./dist/${{ matrix.target }}
+          cd ./dist/${{ matrix.target-gnu }}
+          rm -f $NAME-${{ matrix.target-gnu }}/$NAME-installer-cli.exe
+          7z a ../binaries/$NAME-${{ matrix.target-gnu }}.zip $NAME-${{ matrix.target-gnu }}
+          cd ../${{ matrix.target }}
           rm -f $NAME-${{ matrix.target }}/$NAME-installer-cli.exe
           7z a ../binaries/$NAME-${{ matrix.target }}.zip $NAME-${{ matrix.target }}
 
