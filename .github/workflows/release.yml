@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up QEMU for ARM64
-        if: contains(matrix.name, "aarch64")
+        if: 'aarch64' in matrix.target
         uses: docker/setup-qemu-action@v2
         with:
           platforms: aarch64
