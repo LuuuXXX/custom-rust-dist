@@ -16,7 +16,7 @@ RUN apt-get update && \
       libappindicator3-dev \
       librsvg2-dev \
       perl \
-      musl-gcc
+      musl-tools
 
 # 安装 Rust
 COPY ci/scripts/install-rust.sh /scripts/
