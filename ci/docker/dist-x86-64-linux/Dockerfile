@@ -24,7 +24,8 @@ RUN chmod +x /scripts/install-rust.sh && \
     /scripts/install-rust.sh
 ENV PATH=$PATH:/root/.cargo/bin
 
-ENV HOST_TRIPPLE x86_64-unknown-linux-gnu
+RUN rustup target add x86_64-unknown-linux-musl
+ENV HOST_TRIPPLE x86_64-unknown-linux-musl
 
 # 安装 Node.js 18.x
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
