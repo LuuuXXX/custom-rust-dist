@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # 更新系统并安装必要的软件包
 RUN apt-get update && \
     apt-get install -y \
-      build-essential \
+      make \
       curl \
       wget \
       file \
@@ -15,7 +15,8 @@ RUN apt-get update && \
       libwebkit2gtk-4.0-dev \
       libappindicator3-dev \
       librsvg2-dev \
-      perl
+      perl \
+      musl-gcc
 
 # 安装 Rust
 COPY ci/scripts/install-rust.sh /scripts/
