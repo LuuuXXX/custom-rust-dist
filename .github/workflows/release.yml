@@ -50,6 +50,14 @@ jobs:
         uses: docker/setup-qemu-action@v2
         with:
           platforms: aarch64
+      
+      - name: Set up QEMU for multiple cores
+        if: contains(matrix.target, 'aarch64')
+        run: |
+          echo "Setting up QEMU with multiple cores"
+          export QEMU_CPUS=4  # 设置虚拟 CPU 核心数为 4
+          # 设置 QEMU 使用多个核心
+          echo "Using $QEMU_CPUS CPUs with QEMU"
 
       - name: run build job
         run: bash ci/run.sh
