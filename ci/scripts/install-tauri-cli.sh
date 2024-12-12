@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE_VERSION="v18.19.0"
+mkdir ./cargo_tauri
 
 if [ "$(uname -s)" = "Linux" ]; then
     if [ "$(uname -m)" = "x86_64" ]; then
@@ -17,3 +17,4 @@ else
     mv ./cargo_tauri/cargo-tauri.exe ~/.cargo/bin
 fi
 
+rm -r ./cargo_tauri
